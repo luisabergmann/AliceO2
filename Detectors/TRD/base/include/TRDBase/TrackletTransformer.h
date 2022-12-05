@@ -69,7 +69,11 @@ class TrackletTransformer
   float mXtb0;
 
   const CalVdriftExB* mCalVdriftExB{nullptr};
+<<<<<<< HEAD
   const CalT0* mCalT0{nullptr};
+=======
+  const CalT0*        mCalT0{nullptr};
+>>>>>>> 232fd18031eb964f909dd3198ae0faf3b3ae960f
 };
 
 } // namespace trd
