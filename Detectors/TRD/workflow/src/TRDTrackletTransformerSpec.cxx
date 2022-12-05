@@ -142,12 +142,6 @@ void TRDTrackletTransformerSpec::finaliseCCDB(ConcreteDataMatcher& matcher, void
     return;
   }
   if (matcher == ConcreteDataMatcher("TRD", "CALT0", 0)) {
-<<<<<<< HEAD
-=======
-  if(matcher == ConcreteDataMatcher("TRD", "CALT0", 0)){
->>>>>>> 167850356... updated files for reading t0 calibration
-=======
->>>>>>> 9a19de3b3... Revert "fix commit history"
     LOG(info) << "CalT0 object has been updatet";
     mTransformer.setCalT0((const o2::trd::CalT0*)obj);
     return;

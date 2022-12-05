@@ -70,12 +70,8 @@ class TrackletTransformer
 
   const CalVdriftExB* mCalVdriftExB{nullptr};
   const CalT0* mCalT0{nullptr};
-<<<<<<< HEAD
-=======
+
   const CalT0*        mCalT0{nullptr};
->>>>>>> 167850356... updated files for reading t0 calibration
-=======
->>>>>>> 9a19de3b3... Revert "fix commit history"
 };
 
 } // namespace trd
