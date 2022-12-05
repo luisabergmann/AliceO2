@@ -144,7 +144,7 @@ void TRDTrackletTransformerSpec::finaliseCCDB(ConcreteDataMatcher& matcher, void
 <<<<<<< HEAD
   if (matcher == ConcreteDataMatcher("TRD", "CALT0", 0)) {
 =======
-  if(matcher == ConcreteDataMatcher("TRD", "CALT0", 0)){
+  if (matcher == ConcreteDataMatcher("TRD", "CALT0", 0)) {
 >>>>>>> 232fd18031eb964f909dd3198ae0faf3b3ae960f
     LOG(info) << "CalT0 object has been updatet";
     mTransformer.setCalT0((const o2::trd::CalT0*)obj);
