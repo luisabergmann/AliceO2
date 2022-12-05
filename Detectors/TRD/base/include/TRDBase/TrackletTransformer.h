@@ -71,7 +71,7 @@ class TrackletTransformer
   const CalVdriftExB* mCalVdriftExB{nullptr};
   const CalT0* mCalT0{nullptr};
 
-  const CalT0*        mCalT0{nullptr};
+  const CalT0* mCalT0{nullptr};
 };
 
 } // namespace trd
