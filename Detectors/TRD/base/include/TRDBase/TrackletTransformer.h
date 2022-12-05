@@ -1,4 +1,4 @@
-// Copyright 2019-2020 CERN and copyright holders of ALICE O2.
+mi// Copyright 2019-2020 CERN and copyright holders of ALICE O2.
 // See https://alice-o2.web.cern.ch/copyright for details of the copyright holders.
 // All rights not expressly granted are reserved.
 //
@@ -43,13 +43,15 @@ class TrackletTransformer
   void setCalVdriftExB(const CalVdriftExB* cal) { mCalVdriftExB = cal; };
   void setApplyXOR() { mApplyXOR = true; }
 
+  void setCalT0(const CalT0* cal) { mCalT0 = cal; }
+
   float calculateY(int hcid, int column, int position, const PadPlane* padPlane) const;
 
   float calculateZ(int padrow, const PadPlane* padPlane) const;
 
   float calculateDy(int hcid, int slope, const PadPlane* padPlane) const;
 
-  float calibrateX(double x) const;
+  float calibrateX(int detector, double x) const;
 
   std::array<float, 3> transformL2T(int hcid, std::array<double, 3> spacePoint) const;
 
@@ -67,6 +69,7 @@ class TrackletTransformer
   float mXtb0;
 
   const CalVdriftExB* mCalVdriftExB{nullptr};
+  const CalT0*        mCalT0{nullptr};
 };
 
 } // namespace trd
