@@ -61,7 +61,7 @@ double ErfLandauChi2Functor::operator()(const double* par) const
     double funcVal = par[0] * TMath::Erf(x[i]) + par[1] * TMath::Landau(x[i], par[2], par[3]);
 
     sum2 += TMath::Power(y[i] - funcVal, 2) / y[i];
-    //sum2 += TMath::Power((y[i] - funcVal)/yErr[i],2);
+    // sum2 += TMath::Power((y[i] - funcVal)/yErr[i],2);
   }
 
   return sum2;

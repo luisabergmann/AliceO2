@@ -45,8 +45,8 @@ class CalT0
     int counts = 0;
     for (int iDet = 0; iDet < constants::MAXCHAMBER; ++iDet) {
       if (mT0[iDet] > -5) {
-	sum += mT0[iDet];
-	++counts;
+        sum += mT0[iDet];
+        ++counts;
       }
     }
 

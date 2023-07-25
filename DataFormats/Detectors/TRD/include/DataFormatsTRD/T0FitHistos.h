@@ -30,7 +30,7 @@ namespace trd
 
 class T0FitHistos
 {
-public:
+ public:
   T0FitHistos() = default;
   T0FitHistos(const T0FitHistos&) = default;
   ~T0FitHistos() = default;
@@ -40,12 +40,12 @@ public:
   auto getTimeBin(int index) const { return mTB[index]; }
   auto getADC(int index) const { return mADC[index]; }
   auto getNEntries() const { return mNEntriesTot; }
- 
+
   void fill(const std::vector<o2::trd::PHData> data);
   void merge(const T0FitHistos* prev);
   void print();
- 
-private:
+
+ private:
   std::vector<int> mDet{};
   std::vector<int> mTB{};
   std::vector<int> mADC{};
@@ -54,7 +54,7 @@ private:
 
   ClassDefNV(T0FitHistos, 1);
 };
- 
+
 } // namespace trd
 } // namespace o2
 
