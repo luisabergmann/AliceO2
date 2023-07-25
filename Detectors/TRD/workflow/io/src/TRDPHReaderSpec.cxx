@@ -61,12 +61,12 @@ void TRDPHReader::run(ProcessingContext& pc)
     pc.services().get<ControlService>().readyToQuit(QuitRequest::Me);
   }
 }
-  
+
 DataProcessorSpec getTRDPHReaderSpec()
 {
   std::vector<OutputSpec> outputs;
   outputs.emplace_back(o2::header::gDataOriginTRD, "PULSEHEIGHT", 0, Lifetime::Timeframe);
-  
+
   return DataProcessorSpec{
     "TRDPHReader",
     Inputs{},
@@ -78,6 +78,6 @@ DataProcessorSpec getTRDPHReaderSpec()
       {"treename", VariantType::String, "ph", {"Name of top-level TTree"}},
     }};
 }
-  
+
 } // namespace trd
 } // namespace o2

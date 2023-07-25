@@ -24,7 +24,6 @@ void T0FitHistos::init()
   mDet.resize(0);
   mTB.resize(0);
   mADC.resize(0);
-  
   mInitialized = true;
 }
 
@@ -38,20 +37,20 @@ void T0FitHistos::reset()
 
 void T0FitHistos::fill(const std::vector<o2::trd::PHData> data)
 {
-  
+
   if (!mInitialized) {
     init();
   }
-  
+
   for (auto ph : data) {
     int det = ph.getDetector();
-    int tb  = ph.getTimebin();
+    int tb = ph.getTimebin();
     int adc = ph.getADC();
-    
+
     if (ph.getNneighbours() != 2) {
       continue;
     }
-    
+
     mDet.push_back(det);
     mTB.push_back(tb);
     mADC.push_back(adc);
@@ -62,7 +61,7 @@ void T0FitHistos::fill(const std::vector<o2::trd::PHData> data)
 void T0FitHistos::merge(const T0FitHistos* prev)
 {
   auto sizePrev = (int)prev->getNEntries();
-  
+
   for (int i = 0; i < sizePrev; ++i) {
     mDet.push_back(prev->getDetector(i));
     mTB.push_back(prev->getTimeBin(i));

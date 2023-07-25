@@ -79,13 +79,13 @@ WorkflowSpec defineDataProcessing(ConfigContext const& configcontext)
   if (configcontext.options().get<bool>("gain")) {
     specs.emplace_back(getTRDGainCalibSpec());
   }
-  
+
   if (configcontext.options().get<bool>("t0")) {
-    if (enableRootInp){
+    if (enableRootInp) {
       specs.emplace_back(o2::trd::getTRDPHReaderSpec());
     }
     specs.emplace_back(getTRDT0FitSpec());
   }
-  
+
   return specs;
 }

@@ -50,11 +50,11 @@ class T0FitDevice : public o2::framework::Task
     o2::base::GRPGeomHelper::instance().setRequest(mCCDBRequest);
     auto slotL = ic.options().get<uint32_t>("sec-per-slot");
     auto delay = ic.options().get<uint32_t>("max-delay");
-    
+
     mFitInstance = std::make_unique<o2::trd::T0Fit>();
     mFitInstance->setSlotLengthInSeconds(slotL);
     mFitInstance->setMaxSlotsDelay(delay);
-    if(ic.options().get<bool>("enable-root-output")) {
+    if (ic.options().get<bool>("enable-root-output")) {
       mFitInstance->createOutputFile();
     }
   }
@@ -75,7 +75,7 @@ class T0FitDevice : public o2::framework::Task
       return;
     }
     o2::base::GRPGeomHelper::instance().checkUpdates(pc);
-   
+
     auto dataT0Fit = pc.inputs().get<std::vector<o2::trd::PHData>>("input");
     o2::base::TFIDInfoHelper::fillTFIDInfo(pc, mFitInstance->getCurrentTFInfo());
     LOG(detail) << "Processing TF " << mFitInstance->getCurrentTFInfo().tfCounter << " with " << dataT0Fit.size() << " PHData entries";
@@ -113,7 +113,7 @@ class T0FitDevice : public o2::framework::Task
   void sendOutput(DataAllocator& output)
   {
     // extract CCDB infos and calibration objects, convert it to TMemFile and send them to the output
-    
+
     using clbUtils = o2::calibration::Utils;
     const auto& payloadVec = mFitInstance->getCcdbObjectVector();
     auto& infoVec = mFitInstance->getCcdbObjectInfoVector(); // use non-const version as we update it
@@ -125,7 +125,7 @@ class T0FitDevice : public o2::framework::Task
       auto image = o2::ccdb::CcdbApi::createObjectImage(&payloadVec[i], &w);
       LOG(info) << "Sending object " << w.getPath() << "/" << w.getFileName() << " of size " << image->size()
                 << " bytes, valid for " << w.getStartValidityTimestamp() << " : " << w.getEndValidityTimestamp();
-      
+
       output.snapshot(Output{clbUtils::gDataOriginCDBPayload, "CALT0", i}, *image.get()); // vector<char>
       output.snapshot(Output{clbUtils::gDataOriginCDBWrapper, "CALT0", i}, w);            // root-serialized
     }
@@ -134,10 +134,9 @@ class T0FitDevice : public o2::framework::Task
     }
   }
 };
- 
+
 } // namespace calibration
 
- 
 namespace framework
 {
 
@@ -169,9 +168,9 @@ DataProcessorSpec getTRDT0FitSpec()
       {"sec-per-slot", VariantType::UInt32, 900u, {"number of seconds per calibration time slot"}},
       {"max-delay", VariantType::UInt32, 2u, {"number of slots in past to consider"}},
       {"enable-root-output", VariantType::Bool, false, {"output t0 values to root file"}},
-  }};
+    }};
 }
- 
+
 } // namespace framework
 } // namespace o2
 
